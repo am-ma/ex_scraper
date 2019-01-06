@@ -1,0 +1,10 @@
+url: "https://github.com/search?q=elixir&type=Repositories"
+pager_key: p
+items:
+  - 
+    name: repo
+    selector: ".repo-list-item"
+    fields:
+      - {name: name, selector: "h3 a"}
+      - {name: discription, selector: .d-inline-block}
+      - {name: updated, selector: relative-time}

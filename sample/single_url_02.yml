@@ -1,0 +1,15 @@
+url: "https://github.com/am-ma"
+items:
+  - 
+    name: pinned-repo
+    selector: ".pinned-repos-list > .pinned-repo-item"
+    fields:
+      - {name: name, selector: .repo}
+      - {name: discription, selector: .pinned-repo-desc}
+  - 
+    name: user-profile
+    selector: ".h-card"
+    fields:
+      - {name: name, selector: .p-name}
+      - {name: nickname, selector: .p-nickname}
+      - {name: user_bio, selector: .p-note}

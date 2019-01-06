@@ -1,0 +1,8 @@
+url: "https://github.com/am-ma"
+items:
+  - 
+    name: pinned-repo
+    selector: ".pinned-repos-list > .pinned-repo-item"
+    fields:
+      - {name: name, selector: .repo}
+      - {name: discription, selector: .pinned-repo-desc}

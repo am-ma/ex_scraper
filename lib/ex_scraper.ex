@@ -105,6 +105,6 @@ defmodule ExScraper do
         |> Map.new
       end)
 
-    %{itemname => items}
+    {itemname, items}
   end
 end

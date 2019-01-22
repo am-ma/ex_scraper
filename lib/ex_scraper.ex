@@ -31,7 +31,10 @@ defmodule ExScraper do
 
   # スクレイピング
   defp scraping(url, pager_key, item_configs) do
-    scraping_with_page(url, pager_key, 1, item_configs, [])
+    {:ok, results} = scraping_with_page(url, pager_key, 1, item_configs, [])
+
+    ret = Enum.reverse(results)
+    {:ok, ret}
   end
   defp scraping(url, item_configs) do
     case HTTPoison.get url do
@@ -67,7 +70,7 @@ defmodule ExScraper do
         if Enum.empty?(results) do
           {:error, nil}
         else
-          {:ok, ßresults}
+          {:ok, results}
         end
     end
   end
@@ -86,7 +89,7 @@ defmodule ExScraper do
       |> Enum.map(fn floki_item ->
         item_html = Floki.raw_html(floki_item)
 
-        item = %{}
+        #item = %{}
         # fieldをそれぞれ取り出してitemに設定
         field_configs
         |> Enum.map(fn field_config ->
@@ -96,8 +99,10 @@ defmodule ExScraper do
             |> Floki.text
             |> String.trim
 
-          Map.put(item, fieldname, field)
+          {fieldname, field}
+          #Map.put(item, fieldname, field)
         end)
+        |> Map.new
       end)
 
     %{itemname => items}
